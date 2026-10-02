@@ -28,3 +28,8 @@ Python 3.11+ 标准库 HTTP API + SQLite，无需安装第三方包。负责输�
 免费托管方案见 [免费部署.md](免费部署.md)。`src/wsgi.py` 是 WSGI 入口，与本地 HTTP 服务复用同一套接口和数据库逻辑，无新增第三方依赖。
 
 可在 Linux 服务器用 Python 启动并交由进程管理器常驻，配置 Nginx HTTPS 反向代理。只将代理端口暴露公网，后端监听 127.0.0.1；数据库路径设置为持久目录并定期备份。此版本为课程演示服务，历史为所有访客共享，无用户登录，任何访客均可删除演示记录。公网环境需由反向代理配置请求速率和请求大小限制。数据库不可放在静态前端目录。
+
+
+## 已发布地址
+
+[在线计算器](https://qingsuan-sun-832401315.bold-clove-0728.chatgpt.site)。云端使用 Sites 与 D1 SQLite；兼容平台的完整部署源码、依赖锁文件、路由与数据库迁移见后端仓库 deployment/source.zip，可下载解压检查和复现。deployment/calculator.mjs 为线上计算器解析器，原 src/calculator.py 为 Python 本地版。云端有理数运算最后舍入为 28 位有效数字，Python 版则使用 Decimal 每步舍入。
